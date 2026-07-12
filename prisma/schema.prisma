@@ -7,9 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role { ADMIN AGENT }
-enum PropertyStatus { ACTIVE SOLD RENTED DRAFT }
-enum InquiryStatus { NEW CONTACTED CLOSED }
+enum Role {
+  ADMIN
+  AGENT
+}
+
+enum PropertyStatus {
+  ACTIVE
+  SOLD
+  RENTED
+  DRAFT
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
 
 model User {
   id        String   @id @default(cuid())
