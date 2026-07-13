@@ -92,8 +92,17 @@ export default function Home() {
             alt="Local property plots and houses in Bhadra" 
             fill 
             priority 
-            className="object-cover object-[70%] opacity-90"
+            className="object-cover object-[70%] opacity-30 pointer-events-none"
           />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover opacity-35 pointer-events-none"
+          >
+            <source src="/real-estate-video.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-[#061d36]/95 via-[#061d36]/80 to-[#061d36]/25" />
           <Navbar />
           
