@@ -61,4 +61,11 @@ model Inquiry {
   propertyId String?
   property   Property?     @relation(fields: [propertyId], references: [id], onDelete: SetNull)
   createdAt DateTime      @default(now())
+
+  // Lead qualification fields
+  requirementType String?
+  propertyType    String?
+  preferredArea   String?
+  budget          String?
+  timeline        String?
 }
