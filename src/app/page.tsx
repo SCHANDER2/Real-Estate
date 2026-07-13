@@ -14,7 +14,8 @@ import {
   Star, 
   UsersRound, 
   Search,
-  CheckCircle2
+  CheckCircle2,
+  Map
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -24,54 +25,58 @@ import { properties } from "@/data/properties";
 const services = [
   {
     Icon: House,
-    title: "Buy Plots & Homes",
-    text: "Find verified residential plots, agricultural land, and ready-to-move houses with clear title documents."
+    title: "Residential Plots & Land",
+    text: "Find verified residential plots and land parcels near Dabri Road and expanding sectors of Bhadra."
   },
   {
     Icon: Landmark,
-    title: "Sell Your Property",
-    text: "List your property with us to reach serious, verified local buyers directly without endless middlemen."
+    title: "Sell Local Properties",
+    text: "Position your plots, houses, or retail spaces to reach serious, verified buyers in the Hanumangarh district."
   },
   {
     Icon: Building2,
-    title: "Rentals & Commercial",
-    text: "Locate retail shops, office spaces, or rental houses near key commercial nodes in Bhadra."
+    title: "Rental & Commercial Shops",
+    text: "Locate high-visibility commercial shops, office units, or rental houses close to markets."
   },
   {
     Icon: Handshake,
-    title: "Property & Paperwork Advice",
-    text: "Get honest advice on registry, boundary verification, and local pricing before making a commitment."
+    title: "Document & Registry Guide",
+    text: "Get clear advice on registry verification, mutations, boundary checks, and actual market valuation."
   }
 ];
 
 const trustFactors = [
   {
     Icon: ShieldCheck,
-    title: "100% Verified Titles",
-    text: "We inspect local land registry documents, registry books, and boundary markers before proposing any deal."
+    title: "Document Checks First",
+    text: "We assist in checking land mutation papers, registry records, and ownership logs before any token exchange."
   },
   {
     Icon: MapPin,
-    title: "Dabri & Bhadra Expertise",
-    text: "Our team lives and works here. We understand the actual market value of plots and properties in every street."
+    title: "Bhadra Market Experience",
+    text: "Our team lives and operates locally. We know the actual price trends, local road widths, and layout approvals."
   },
   {
     Icon: BadgeCheck,
-    title: "Zero Hidden Brokerage",
-    text: "No surprise charges, fake prices, or double-talk. We believe in direct deals and honest communication."
+    title: "Straightforward Deals",
+    text: "No artificial price hikes, hidden commissions, or double-talk. We focus on fair value for buyers and sellers."
   },
   {
     Icon: UsersRound,
-    title: "Direct Owner Meetings",
-    text: "We arrange face-to-face discussions between buyers and sellers to ensure full clarity on terms and payments."
+    title: "Face-to-Face Meetings",
+    text: "We bring the buyer and seller together directly so that all payment terms and timelines are discussed upfront."
   }
 ];
 
 const recentDeals = [
-  { detail: "1800 sq ft Residential Plot near Dabri Road", status: "Sold in 18 days" },
-  { detail: "Commercial Retail Space in Main Market Bhadra", status: "Leased successfully" },
-  { detail: "3 BHK Corner House in Bhadra Sector 2", status: "Title cleared & Sold" },
-  { detail: "4 Bigha Agricultural Land near Dabri Village", status: "Ownership transferred" }
+  { detail: "1,800 sq ft Residential Plot on Dabri Road", status: "Registry completed & title transferred" },
+  { detail: "Commercial Shop unit in Main Market Bhadra", status: "Lease agreement signed directly" },
+  { detail: "3 BHK Family House near Govt Girls School", status: "Sold to a local buyer within 3 weeks" },
+  { detail: "5 Bigha Agricultural Land parcel near Dabri", status: "Boundary demarcated & ownership updated" }
+];
+
+const localAreas = [
+  "Dabri", "Dabri Road", "Hanumangarh Road", "Main Market Bhadra", "Bypass Road", "SBI Bank Sector"
 ];
 
 export default function Home() {
@@ -81,10 +86,10 @@ export default function Home() {
     <>
       <main className="bg-white">
         {/* Hero Section */}
-        <section className="relative min-h-[720px] overflow-hidden bg-navy text-white">
+        <section className="relative min-h-[700px] overflow-hidden bg-navy text-white">
           <Image 
             src="/images/hero-estate.png" 
-            alt="Real estate in Bhadra by Choudhary Property" 
+            alt="Local property plots and houses in Bhadra" 
             fill 
             priority 
             className="object-cover object-[70%] opacity-90"
@@ -92,36 +97,41 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#061d36]/95 via-[#061d36]/80 to-[#061d36]/25" />
           <Navbar />
           
-          <div className="container-page relative flex min-h-[720px] items-center pt-24 pb-16">
+          <div className="container-page relative flex min-h-[700px] items-center pt-24 pb-16">
             <div className="max-w-2xl">
               <span className="inline-block rounded bg-gold/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#edc66a] border border-gold/20">
-                LOCAL PROPERTY EXPERTS IN BHADRA
+                LOCAL REAL ESTATE ADVISORS IN BHADRA
               </span>
-              <h1 className="mt-5 font-display text-4xl leading-[1.1] sm:text-5xl lg:text-6xl font-bold">
-                Your Trusted Partner for Plots, Homes & Land in <em className="font-normal text-[#edc66a] not-italic">Bhadra.</em>
+              <h1 className="mt-5 font-display text-4xl leading-[1.12] sm:text-5xl lg:text-6xl font-bold">
+                Buy, Sell, or Rent Verified Properties in <em className="font-normal text-[#edc66a] not-italic">Bhadra.</em>
               </h1>
-              <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-white/80">
-                Honest property guidance near SBI Bank, Dabri Bhadra. We assist local buyers and sellers with verified land records, transparent pricing, and clear documentation.
+              <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-white/85">
+                We assist local buyers and sellers with residential plots, family homes, and commercial shops. Direct owner discussions and hand-verified registry records Near SBI Bank, Dabri Bhadra.
               </p>
               
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link href="/properties" className="button-primary">
-                  Browse Properties <ArrowRight size={17} />
+                  Explore Listings <ArrowRight size={17} />
                 </Link>
                 <Link href="/contact" className="button-secondary">
-                  Contact Local Experts
+                  Talk to Our Team
                 </Link>
               </div>
 
-              <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 max-w-md">
-                <div>
-                  <span className="block text-3xl font-bold text-[#edc66a]">100%</span>
-                  <span className="text-xs text-white/70 uppercase tracking-wider font-semibold">Verified Land Records</span>
-                </div>
-                <div>
-                  <span className="block text-3xl font-bold text-[#edc66a]">12+ Yrs</span>
-                  <span className="text-xs text-white/70 uppercase tracking-wider font-semibold">Local Market Presence</span>
-                </div>
+              {/* Believable Soft Trust Signals */}
+              <div className="mt-12 flex flex-col sm:flex-row gap-6 border-t border-white/10 pt-8 text-xs font-semibold text-white/70 tracking-wide uppercase">
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-gold" />
+                  Serving Bhadra since 2014
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-gold" />
+                  Hand-Verified Property Titles
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-gold" />
+                  Direct Owner-to-Buyer Deals
+                </span>
               </div>
             </div>
           </div>
@@ -132,13 +142,13 @@ export default function Home() {
           <div className="mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow-luxe border border-slate-100">
             <form action="/properties" method="GET" className="grid gap-4 md:grid-cols-3">
               <div>
-                <label htmlFor="search-input" className="block text-xs font-bold text-navy uppercase tracking-wider mb-2">Search Location / Keyword</label>
+                <label htmlFor="search-input" className="block text-xs font-bold text-navy uppercase tracking-wider mb-2">Search Location or Keyword</label>
                 <div className="relative flex items-center">
                   <Search size={16} className="absolute left-3.5 text-slate-400" />
                   <input
                     id="search-input"
                     name="query"
-                    placeholder="e.g. Dabri, Main Road..."
+                    placeholder="e.g. Dabri Road, Market..."
                     className="w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 py-3 text-sm outline-none focus:border-gold transition-colors"
                   />
                 </div>
@@ -165,10 +175,27 @@ export default function Home() {
                   type="submit"
                   className="w-full bg-navy text-white hover:bg-gold py-3 px-6 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  Search Properties <ArrowRight size={16} />
+                  Find Matching Properties <ArrowRight size={16} />
                 </button>
               </div>
             </form>
+          </div>
+        </section>
+
+        {/* Areas Served Strip */}
+        <section className="bg-slate-50 py-6 border-b border-slate-100">
+          <div className="container-page flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <Map size={14} className="text-gold" /> Areas we serve:
+            </span>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-navy">
+              {localAreas.map((area, idx) => (
+                <span key={area} className="flex items-center gap-2">
+                  {idx > 0 && <span className="hidden md:inline text-slate-300">•</span>}
+                  {area}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -304,20 +331,23 @@ export default function Home() {
               {[
                 {
                   name: "Rakesh Sharma",
-                  role: "Plot Buyer in Dabri",
-                  quote: "Very professional and transparent. Sushil helped us verify the registry registry documents and guided us on boundary lines before we paid any token money. Extremely trustworthy."
+                  role: "Plot Buyer",
+                  context: "Bought a 1,800 sq ft plot at Dabri Road",
+                  quote: "Very professional and transparent. Sushil helped us verify the registry documents and guided us on boundary lines before we paid any token money. Extremely trustworthy."
                 },
                 {
-                  name: "Priya Devi",
-                  role: "House Seller",
+                  name: "Smt. Priya Devi",
+                  role: "Home Seller",
+                  context: "Sold a 3 BHK Family House near Govt Girls School",
                   quote: "We wanted to sell our family home. Sachin handled the visits and filtered out non-serious queries. We settled the deal in less than a month with clear face-to-face negotiations."
                 },
                 {
                   name: "Amit Kumar",
-                  role: "Shop Owner",
-                  quote: "Finding retail spaces in Main Market Bhadra with proper parking and power title is difficult. Choudhary Property got me a clear commercial space in two visits."
+                  role: "Commercial Tenant",
+                  context: "Leased Commercial Shop in Main Market Bhadra",
+                  quote: "Finding retail spaces in Main Market Bhadra with proper parking and clear title is difficult. Choudhary Property got me a clear commercial space in two visits."
                 }
-              ].map(({ name, role, quote }) => (
+              ].map(({ name, role, context, quote }) => (
                 <figure key={name} className="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm flex flex-col justify-between h-full">
                   <div>
                     <div className="flex gap-1 text-gold">
@@ -331,7 +361,7 @@ export default function Home() {
                   </div>
                   <figcaption className="mt-6 pt-4 border-t border-slate-100">
                     <p className="font-bold text-navy text-sm">{name}</p>
-                    <p className="text-xs text-slate-500 mt-0.5">{role}</p>
+                    <p className="text-xs text-[#a57825] font-semibold mt-0.5">{role} &middot; <span className="text-slate-500 font-normal">{context}</span></p>
                   </figcaption>
                 </figure>
               ))}

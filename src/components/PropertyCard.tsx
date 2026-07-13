@@ -17,6 +17,11 @@ export function PropertyCard({ property }: { property: Property }) {
         <span className="absolute left-4 top-4 rounded-full bg-navy/95 text-white backdrop-blur-sm px-3.5 py-1 text-xs font-bold uppercase tracking-wider">
           {property.type}
         </span>
+        {property.highlight && (
+          <span className="absolute right-4 top-4 rounded-full bg-gold/95 text-white backdrop-blur-sm px-3 py-1 text-[10px] font-bold uppercase tracking-wider">
+            {property.highlight}
+          </span>
+        )}
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
@@ -33,7 +38,9 @@ export function PropertyCard({ property }: { property: Property }) {
 
         <p className="mt-2 flex items-center gap-1.5 text-sm text-slate-500">
           <MapPin size={15} className="text-gold shrink-0" />
-          {property.location}
+          <span className="truncate">
+            {property.location} {property.landmark && <span className="text-xs text-slate-400 font-medium">({property.landmark})</span>}
+          </span>
         </p>
 
         {/* Short Highlight */}
@@ -41,8 +48,22 @@ export function PropertyCard({ property }: { property: Property }) {
           {property.description}
         </p>
 
+        {/* Possession & Facing Sub-strip */}
+        <div className="mt-3.5 flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-wider">
+          {property.possession && (
+            <span className="text-[#a57825] bg-[#fbf5e6] border border-[#f3e6c8] px-2 py-0.5 rounded">
+              {property.possession}
+            </span>
+          )}
+          {property.facing && (
+            <span className="text-navy bg-slate-50 border border-slate-100 px-2 py-0.5 rounded">
+              {property.facing}
+            </span>
+          )}
+        </div>
+
         {/* Property Specs */}
-        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-slate-100 pt-4 text-xs font-semibold text-slate-500">
           <span className="flex items-center gap-1">
             <Ruler size={14} className="text-navy" />
             {property.area.toLocaleString()} sq ft
